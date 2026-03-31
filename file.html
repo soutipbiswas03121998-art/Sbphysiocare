@@ -1,0 +1,81 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SB PhysioCare</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800"><!-- Header --><header class="bg-black text-white p-5 flex justify-between items-center sticky top-0">
+  <h1 class="text-2xl font-bold">SB PhysioCare</h1>
+</header><!-- Hero --><section class="text-center py-16 bg-gradient-to-r from-black to-gray-700 text-white">
+  <h2 class="text-4xl font-bold mb-4">Premium Physiotherapy Care</h2>
+  <p class="mb-6">Book your session instantly</p>
+  <a href="#booking" class="bg-yellow-400 text-black px-6 py-3 rounded-full font-semibold">Book Now</a>
+</section><!-- Booking System --><section id="booking" class="py-16 px-6 text-center">
+  <h3 class="text-3xl font-bold mb-8">Book Your Appointment</h3>  <div class="max-w-xl mx-auto bg-white p-8 rounded-2xl shadow-lg space-y-4"><input id="name" type="text" placeholder="Your Name" class="w-full p-3 border rounded">
+<input id="phone" type="tel" placeholder="Phone Number" class="w-full p-3 border rounded">
+
+<select id="service" class="w-full p-3 border rounded">
+  <option>Select Service</option>
+  <option>Back Pain Treatment</option>
+  <option>Neck Pain</option>
+  <option>Post Surgery Rehab</option>
+  <option>Home Visit</option>
+</select>
+
+<input id="date" type="date" class="w-full p-3 border rounded">
+
+<select id="time" class="w-full p-3 border rounded">
+  <option>Select Time Slot</option>
+  <option>10:00 AM</option>
+  <option>12:00 PM</option>
+  <option>3:00 PM</option>
+  <option>6:00 PM</option>
+</select>
+
+<!-- Pay Button -->
+<a href="#" id="payBtn" class="block bg-yellow-400 text-black py-3 rounded-full font-semibold">Pay & Confirm Booking</a>
+
+<!-- WhatsApp Button -->
+<a href="#" id="waBtn" class="block bg-green-500 text-white py-3 rounded-full">Confirm via WhatsApp</a>
+
+  </div>
+</section><!-- Script for Dynamic WhatsApp --><script>
+const waBtn = document.getElementById('waBtn');
+const payBtn = document.getElementById('payBtn');
+
+waBtn.addEventListener('click', function() {
+  const name = document.getElementById('name').value;
+  const phone = document.getElementById('phone').value;
+  const service = document.getElementById('service').value;
+  const date = document.getElementById('date').value;
+  const time = document.getElementById('time').value;
+
+  const message = `Booking Request:%0AName: ${name}%0APhone: ${phone}%0AService: ${service}%0ADate: ${date}%0ATime: ${time}`;
+
+  waBtn.href = `https://wa.me/91897200XXXX?text=${message}`;
+});
+
+payBtn.addEventListener('click', function(e) {
+  e.preventDefault();
+
+  const name = document.getElementById('name').value;
+  const phone = document.getElementById('phone').value;
+  const service = document.getElementById('service').value;
+  const date = document.getElementById('date').value;
+  const time = document.getElementById('time').value;
+
+  const message = `Payment Done:%0AName: ${name}%0APhone: ${phone}%0AService: ${service}%0ADate: ${date}%0ATime: ${time}%0A(Please attach payment screenshot)`;
+
+  // First open payment
+  window.open('https://upi.me/pay?pa=8972007976@ibl', '_blank');
+
+  // Then redirect to WhatsApp after short delay
+  setTimeout(() => {
+    window.location.href = `https://wa.me/918972007976?text=${message}`;
+  }, 1500);
+});
+</script><!-- Footer --><footer class="bg-black text-white text-center p-4 mt-10">
+  <p>© 2026 SB PhysioCare</p>
+</footer></body>
+</html>
